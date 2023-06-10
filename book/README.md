@@ -21,3 +21,8 @@
 - クエリの開発で柔軟にクエリを書けるんだなと感心しつつ、RDBのバックエンドがストレージなのに対して、GraphQLは特にバックエンドを規定してなくて、RESTや他のGraphQLがバックエンドにもなりえるとあった
 - そうするとそれってどうやって実装するの感、パフォーマンスいかにもやばそう感
 - GraphiQLとかGraphQL Playgroundはそういう単体のWebサービスがあるんじゃなくて、GraphQL APIの提供元がユーザーに提供できるお試しツールみたいな感じなのか、いいね
+
+## 参照
+
+- [O'Reilly Japan - 初めてのGraphQL](https://www.oreilly.co.jp/books/9784873118932/)
+- [MoonHighway/learning-graphql: The code samples for Learning GraphQL by Eve Porcello and Alex Banks, published by O'Reilly Media](https://github.com/MoonHighway/learning-graphql)
