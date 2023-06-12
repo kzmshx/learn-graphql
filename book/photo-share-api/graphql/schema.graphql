@@ -2,7 +2,8 @@ type User {
   githubUser: ID!
   name: String
   avatar: String
-  postedPhotos: [Photo!]!
+  postedPhotos: [Photo]!
+  inPhotos: [Photo]!
 }
 
 enum PhotoCategory {
@@ -20,6 +21,7 @@ type Photo {
   category: PhotoCategory!
   description: String
   postedBy: User!
+  taggedUsers: [User]!
 }
 
 type Query {

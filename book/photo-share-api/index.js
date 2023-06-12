@@ -6,15 +6,26 @@ const typeDefs = fs.readFileSync(path.join(__dirname, 'graphql/schema.graphql'),
 
 const users = require('./data/users.json')
 const photos = require('./data/photos.json')
+const tags = require('./data/tags.json')
 let _id = photos.length
 
 const resolvers = {
-  Photo: {
-    url: (parent) => `https://www.example.com/img/${parent.id}.jpg`,
-    postedBy: (parent) => users.find((u) => u.githubUser === parent.githubUser),
-  },
   User: {
-    postedPhotos: (parent) => photos.filter((p) => p.githubUser === parent.githubUser),
+    postedPhotos: parent => photos.filter(p => p.githubUser === parent.githubUser),
+    inPhotos: parent =>
+      tags
+        .filter(t => t.userID === parent.githubUser)
+        .map(t => t.photoID)
+        .map(photoID => photos.find(p => p.id === photoID)),
+  },
+  Photo: {
+    url: parent => `https://www.example.com/img/${parent.id}.jpg`,
+    postedBy: parent => users.find(u => u.githubUser === parent.githubUser),
+    taggedUsers: parent =>
+      tags
+        .filter(t => t.photoID === parent.id)
+        .map(t => t.userID)
+        .map(userID => users.find(u => u.githubUser === userID)),
   },
   Query: {
     totalPhotos: () => photos.length,

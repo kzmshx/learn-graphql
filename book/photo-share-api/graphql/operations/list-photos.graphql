@@ -2,8 +2,16 @@ query listPhotos {
   allPhotos {
     id
     name
+    category
     description
     postedBy {
+      name
+      inPhotos {
+        name
+        category
+      }
+    }
+    taggedUsers {
       name
     }
   }
