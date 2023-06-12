@@ -6,12 +6,24 @@
   "author": "Kazumasa Hirata",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -e js,json,graphql"
+    "start": "nodemon -e js,json,graphql",
+    "eslint": "eslint '**/*.{js,graphql}'",
+    "prettier": "prettier '**/*.{js,graphql}'",
+    "lint": "npm run eslint && npm run prettier -- --list-different",
+    "format": "npm run eslint -- --fix && npm run prettier -- --write"
   },
   "dependencies": {
     "apollo-server": "^3.12.0",
+    "eslint-config-prettier": "^8.8.0",
     "graphql": "^16.6.0",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.8"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^8.42.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^16.0.0",
+    "eslint-plugin-promise": "^6.1.1"
+  }
 }
