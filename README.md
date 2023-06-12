@@ -2,7 +2,7 @@
 
 GraphQLを学ぶ。
 
-## シラバス
+## ToDo
 
 - [ ] [初めてのGraphQL | O'Reilly Japan](https://www.oreilly.co.jp/books/9784873118932/)
 - [ ] [Building a GraphQL Server with TypeScript & Apollo](https://www.howtographql.com/typescript-apollo/0-introduction/)
@@ -18,7 +18,7 @@ GraphQLを学ぶ。
 
 ## 目標
 
-- 期間内にシラバスの内容を完了する
+- 期間内にToDoを完了する
 
 ## その他の資料・教材
 
