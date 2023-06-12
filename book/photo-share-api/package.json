@@ -7,7 +7,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -e js,json,graphql",
-    "eslint": "eslint '**/*.{js,graphql}'",
+    "eslint": "eslint '**/*.js'",
     "prettier": "prettier '**/*.{js,graphql}'",
     "lint": "npm run eslint && npm run prettier -- --list-different",
     "format": "npm run eslint -- --fix && npm run prettier -- --write"
