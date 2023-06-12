@@ -1,3 +1,10 @@
+type User {
+  githubUser: ID!
+  name: String
+  avatar: String
+  postedPhotos: [Photo!]!
+}
+
 enum PhotoCategory {
   SELFIE
   PORTRAIT
@@ -12,6 +19,7 @@ type Photo {
   name: String!
   category: PhotoCategory!
   description: String
+  postedBy: User!
 }
 
 type Query {

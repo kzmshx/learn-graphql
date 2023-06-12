@@ -3,5 +3,8 @@ query listPhotos {
     id
     name
     description
+    postedBy {
+      name
+    }
   }
 }
