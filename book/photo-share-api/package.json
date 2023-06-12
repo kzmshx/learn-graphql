@@ -1,0 +1,17 @@
+{
+  "name": "photo-share-api",
+  "version": "0.1.0",
+  "description": "Photo Share API",
+  "license": "MIT",
+  "author": "Kazumasa Hirata",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -e js,json,graphql"
+  },
+  "dependencies": {
+    "apollo-server": "^3.12.0",
+    "graphql": "^16.6.0",
+    "nodemon": "^2.0.22"
+  },
+  "devDependencies": {}
+}
