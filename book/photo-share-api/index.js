@@ -7,9 +7,17 @@ const typeDefs = fs.readFileSync(path.join(__dirname, 'graphql/schema.graphql'),
 const users = require('./data/users.json')
 const photos = require('./data/photos.json')
 const tags = require('./data/tags.json')
+const { GraphQLScalarType } = require('graphql/type')
 let _id = photos.length
 
 const resolvers = {
+  DateTime: new GraphQLScalarType({
+    name: 'DateTime',
+    description: 'A valid date time value',
+    parseLiteral: ast => ast.value,
+    parseValue: value => new Date(value),
+    serialize: value => new Date(value).toISOString(),
+  }),
   User: {
     postedPhotos: parent => photos.filter(p => p.githubUser === parent.githubUser),
     inPhotos: parent =>
@@ -36,6 +44,7 @@ const resolvers = {
       const newPhoto = {
         id: _id++,
         ...args.input,
+        createdAt: new Date(),
       }
       photos.push(newPhoto)
       return newPhoto

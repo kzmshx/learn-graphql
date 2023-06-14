@@ -4,26 +4,30 @@
     "name": "Sample photo 1",
     "description": "A sample photo",
     "category": "SELFIE",
-    "githubUser": "mHattrup"
+    "githubUser": "mHattrup",
+    "createdAt": "3-28-1977"
   },
   {
     "id": "1",
     "name": "Dropping the Heart Chute",
     "description": "The heart chute is one of my favorite chutes",
     "category": "ACTION",
-    "githubUser": "gPlake"
+    "githubUser": "gPlake",
+    "createdAt": "1-2-1985"
   },
   {
     "id": "2",
     "name": "Enjoying the sunshine",
     "category": "SELFIE",
-    "githubUser": "sSchmidt"
+    "githubUser": "sSchmidt",
+    "createdAt": "2018-04-15T19:09:57.308Z"
   },
   {
     "id": "3",
     "name": "Gunbarrel 25",
     "description": "25 laps on gunbarrel today",
     "category": "LANDSCAPE",
-    "githubUser": "sSchmidt"
+    "githubUser": "sSchmidt",
+    "createdAt": "2023-06-14T21:09:22.308Z"
   }
 ]

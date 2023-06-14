@@ -39,6 +39,13 @@
 - ミューテーションはアプリケーションにおける動詞、実装したことないがRPCと同じ考え方？
 - OpenAPIだとYAMLで書くけど、GraphQLはSDLで書くので、SDLの時点で可読性がOpenAPIよりも高い気がしていい
 
+### 5章 GraphQLサーバーの実装
+
+- カスタムスカラー型の定義には`parseLiteral`、`parseValue`、`serialize`の実装が必要
+  - `parseLiteral`はクエリに直接追加された値を取得する
+  - `parseValue`はクエリとともに送られてくる文字列をパースする
+  - `serialize`はフィールド値を文字列に変換する
+
 ## 参照
 
 - [O'Reilly Japan - 初めてのGraphQL](https://www.oreilly.co.jp/books/9784873118932/)

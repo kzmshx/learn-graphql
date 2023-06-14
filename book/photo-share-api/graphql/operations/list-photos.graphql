@@ -14,5 +14,6 @@ query listPhotos {
     taggedUsers {
       name
     }
+    createdAt
   }
 }
