@@ -4,9 +4,13 @@
     "commonjs": true,
     "es2021": true
   },
+  "plugins": [
+    "import"
+  ],
   "extends": [
     "standard",
-    "prettier"
+    "prettier",
+    "plugin:import/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": "latest"
