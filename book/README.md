@@ -45,6 +45,7 @@
   - `parseLiteral`はクエリに直接追加された値を取得する
   - `parseValue`はクエリとともに送られてくる文字列をパースする
   - `serialize`はフィールド値を文字列に変換する
+- `apollo-server-express`がDeprecatedになってるからと思って`@apollo/server`に移行したりしてたらめちゃめちゃ時間消費してしまった、耐えて本の指示通りにやるべきだったかな
 
 ## 参照
 
