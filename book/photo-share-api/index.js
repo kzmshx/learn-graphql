@@ -20,9 +20,15 @@ const typeDefs = readFileSync(path.join(__dirname, 'graphql/schema.graphql'), { 
   const client = await MongoClient.connect(MONGODB_HOST, { useNewUrlParser: true });
   const db = client.db();
 
-  const context = { db };
-
-  const server = new ApolloServer({ typeDefs, resolvers, context });
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: async ({ req }) => {
+      const githubToken = req.headers.authorization;
+      const currentUser = await db.collection('users').findOne({ githubToken });
+      return { db, currentUser };
+    },
+  });
   await server.start();
 
   server.applyMiddleware({ app });
