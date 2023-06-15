@@ -1,15 +1,16 @@
-import { GraphQLScalarType } from 'graphql'
+const fs = require('fs')
+const path = require('path')
+const { ApolloServer } = require('apollo-server')
 
-import { createRequire } from 'node:module'
+const typeDefs = fs.readFileSync(path.join(__dirname, 'graphql/schema.graphql'), { encoding: 'utf-8' })
 
-const require = createRequire(import.meta.url)
+const users = require('./data/users.json')
 const photos = require('./data/photos.json')
 const tags = require('./data/tags.json')
-const users = require('./data/users.json')
-
+const { GraphQLScalarType } = require('graphql/type')
 let _id = photos.length
 
-export default {
+const resolvers = {
   DateTime: new GraphQLScalarType({
     name: 'DateTime',
     description: 'A valid date time value',
@@ -50,3 +51,5 @@ export default {
     },
   },
 }
+
+new ApolloServer({ typeDefs, resolvers }).listen().then(({ url }) => console.log(`GraphQL Server running on ${url}`))

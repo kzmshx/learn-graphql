@@ -4,25 +4,17 @@
   "description": "Photo Share API",
   "license": "MIT",
   "author": "Kazumasa Hirata",
-  "type": "module",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
+    "start": "nodemon -e js,json,graphql",
     "eslint": "eslint '**/*.js'",
-    "format": "npm run eslint -- --fix && npm run prettier -- --write",
-    "lint": "npm run eslint && npm run prettier -- --list-different",
     "prettier": "prettier '**/*.{js,graphql}'",
-    "start": "nodemon -e js,json,graphql"
+    "lint": "npm run eslint && npm run prettier -- --list-different",
+    "format": "npm run eslint -- --fix && npm run prettier -- --write"
   },
   "dependencies": {
-    "@apollo/server": "^4.7.3",
-    "@graphql-tools/graphql-file-loader": "^8.0.0",
-    "@graphql-tools/load": "^8.0.0",
-    "@graphql-tools/schema": "^10.0.0",
-    "body-parser": "^1.20.2",
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
+    "apollo-server": "^3.12.0",
     "graphql": "^16.6.0",
-    "graphql-playground-middleware-express": "^1.7.23",
     "nodemon": "^2.0.22"
   },
   "devDependencies": {
