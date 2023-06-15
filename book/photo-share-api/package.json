@@ -6,11 +6,13 @@
   "author": "Kazumasa Hirata",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -e js,json,graphql",
     "eslint": "eslint '**/*.js'",
-    "prettier": "prettier '**/*.{js,graphql}'",
+    "format": "npm run eslint -- --fix && npm run prettier -- --write",
     "lint": "npm run eslint && npm run prettier -- --list-different",
-    "format": "npm run eslint -- --fix && npm run prettier -- --write"
+    "mongo:start": "docker compose up -d",
+    "mongo:stop": "docker compose down",
+    "prettier": "prettier '**/*.{js,graphql}'",
+    "start": "nodemon -e js,json,graphql"
   },
   "dependencies": {
     "apollo-server-express": "^3.12.0",
