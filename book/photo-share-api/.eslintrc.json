@@ -34,6 +34,7 @@
           "caseInsensitive": true
         }
       }
-    ]
+    ],
+    "camelcase": "off"
   }
 }

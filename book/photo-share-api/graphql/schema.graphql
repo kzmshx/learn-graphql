@@ -8,6 +8,11 @@ type User {
   inPhotos: [Photo]!
 }
 
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
 enum PhotoCategory {
   SELFIE
   PORTRAIT
@@ -41,5 +46,6 @@ input PostPhotoInput {
 }
 
 type Mutation {
+  githubAuth(code: String!): AuthPayload!
   postPhoto(input: PostPhotoInput!): Photo!
 }

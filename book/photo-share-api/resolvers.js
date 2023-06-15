@@ -3,9 +3,10 @@ const { GraphQLScalarType } = require('graphql/type');
 const photos = require('./data/photos.json');
 const tags = require('./data/tags.json');
 const users = require('./data/users.json');
+const { authorizeWithGitHub } = require('./lib');
 let _id = photos.length;
 
-const resolvers = {
+module.exports = {
   DateTime: new GraphQLScalarType({
     name: 'DateTime',
     description: 'A valid date time value',
@@ -45,6 +46,35 @@ const resolvers = {
     },
   },
   Mutation: {
+    async githubAuth(parent, { code }, { db }) {
+      const authResult = await authorizeWithGitHub({
+        client_id: process.env.GITHUB_CLIENT_ID,
+        client_secret: process.env.GITHUB_CLIENT_SECRET,
+        code,
+      });
+      if (authResult.message) {
+        throw new Error(authResult.message);
+      }
+
+      const { name, login, avatar_url, access_token } = authResult;
+
+      await db.collection('users').replaceOne(
+        {
+          githubUser: login,
+        },
+        {
+          name,
+          githubUser: login,
+          githubToken: access_token,
+          avatar: avatar_url,
+        },
+        { upsert: true }
+      );
+
+      const user = await db.collection('users').findOne({ githubUser: login }, { _id: 0 });
+
+      return { user, token: access_token };
+    },
     postPhoto(parent, args) {
       const newPhoto = {
         id: _id++,
@@ -56,5 +86,3 @@ const resolvers = {
     },
   },
 };
-
-module.exports = resolvers;
