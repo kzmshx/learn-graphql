@@ -57,6 +57,30 @@ module.exports = {
     },
   },
   Mutation: {
+    addFakeUsers: async (root, { count }, { db }) => {
+      const { results } = await fetch(`https://randomuser.me/api/?results=${count}`).then(res => res.json());
+      const users = results.map(r => ({
+        githubToken: r.login.sha1,
+        githubUser: r.login.username,
+        name: `${r.name.first} ${r.name.last}`,
+        avatar: r.picture.thumbnail,
+      }));
+
+      await db.collection('users').insertMany(users);
+
+      return users;
+    },
+    fakeUserAuth: async (parent, { githubUser }, { db }) => {
+      const user = await db.collection('users').findOne({ githubUser });
+      if (!user) {
+        throw new Error(`Cannot find user with githubUser "${githubUser}"`);
+      }
+
+      return {
+        token: user.githubToken,
+        user,
+      };
+    },
     githubAuth: async (parent, { code }, { db }) => {
       const authResult = await authorizeWithGitHub({
         client_id: process.env.GITHUB_CLIENT_ID,

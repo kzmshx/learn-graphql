@@ -47,6 +47,8 @@ input PostPhotoInput {
 }
 
 type Mutation {
+  addFakeUsers(count: Int = 1): [User!]!
+  fakeUserAuth(githubUser: ID!): AuthPayload!
   githubAuth(code: String!): AuthPayload!
   postPhoto(input: PostPhotoInput!): Photo!
 }
