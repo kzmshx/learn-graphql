@@ -32,6 +32,7 @@ module.exports = {
         .map(userID => users.find(u => u.githubUser === userID)),
   },
   Query: {
+    me: (parent, args, { currentUser }) => currentUser,
     totalPhotos: (parent, args, { db }) => {
       return db.collection('photos').estimatedDocumentCount();
     },
