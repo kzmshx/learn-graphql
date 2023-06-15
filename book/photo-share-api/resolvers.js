@@ -31,8 +31,18 @@ const resolvers = {
         .map(userID => users.find(u => u.githubUser === userID)),
   },
   Query: {
-    totalPhotos: () => photos.length,
-    allPhotos: () => photos,
+    totalPhotos: (parent, args, { db }) => {
+      return db.collection('photos').estimatedDocumentCount();
+    },
+    allPhotos: (parent, args, { db }) => {
+      return db.collection('photos').find().toArray();
+    },
+    totalUsers: (parent, args, { db }) => {
+      return db.collection('users').estimatedDocumentCount();
+    },
+    allUsers: (parent, args, { db }) => {
+      return db.collection('users').find().toArray();
+    },
   },
   Mutation: {
     postPhoto(parent, args) {
