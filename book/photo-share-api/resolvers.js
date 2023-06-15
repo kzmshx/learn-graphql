@@ -4,7 +4,6 @@ const photos = require('./data/photos.json');
 const tags = require('./data/tags.json');
 const users = require('./data/users.json');
 const { authorizeWithGitHub } = require('./lib');
-let _id = photos.length;
 
 module.exports = {
   DateTime: new GraphQLScalarType({
@@ -15,21 +14,32 @@ module.exports = {
     serialize: value => new Date(value).toISOString(),
   }),
   User: {
-    postedPhotos: parent => photos.filter(p => p.githubUser === parent.githubUser),
-    inPhotos: parent =>
-      tags
+    postedPhotos: ({ githubUser }, args, { db }) => {
+      return db.collection('photos').find({ githubUser }).toArray();
+    },
+    inPhotos: parent => {
+      return tags
         .filter(t => t.userID === parent.githubUser)
         .map(t => t.photoID)
-        .map(photoID => photos.find(p => p.id === photoID)),
+        .map(photoID => photos.find(p => p.id === photoID));
+    },
   },
   Photo: {
-    url: parent => `https://www.example.com/img/${parent.id}.jpg`,
-    postedBy: parent => users.find(u => u.githubUser === parent.githubUser),
-    taggedUsers: parent =>
-      tags
+    id: parent => {
+      return parent.id || parent._id;
+    },
+    url: parent => {
+      return `/img/${parent._id}.jpg`;
+    },
+    postedBy: ({ githubUser }, args, { db }) => {
+      return db.collection('users').findOne({ githubUser });
+    },
+    taggedUsers: parent => {
+      return tags
         .filter(t => t.photoID === parent.id)
         .map(t => t.userID)
-        .map(userID => users.find(u => u.githubUser === userID)),
+        .map(userID => users.find(u => u.githubUser === userID));
+    },
   },
   Query: {
     me: (parent, args, { currentUser }) => currentUser,
@@ -76,13 +86,21 @@ module.exports = {
 
       return { user, token: access_token };
     },
-    postPhoto(parent, args) {
+    postPhoto(parent, args, { db, currentUser }) {
+      if (!currentUser) {
+        throw new Error('only an authorized user can post a photo');
+      }
+
       const newPhoto = {
-        id: _id++,
         ...args.input,
+        githubUser: currentUser.githubUser,
         createdAt: new Date(),
       };
-      photos.push(newPhoto);
+
+      const { insertedId } = db.collection('photos').insertOne(newPhoto);
+
+      newPhoto.id = insertedId;
+
       return newPhoto;
     },
   },
