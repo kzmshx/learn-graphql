@@ -57,7 +57,7 @@ module.exports = {
     },
   },
   Mutation: {
-    async githubAuth(parent, { code }, { db }) {
+    githubAuth: async (parent, { code }, { db }) => {
       const authResult = await authorizeWithGitHub({
         client_id: process.env.GITHUB_CLIENT_ID,
         client_secret: process.env.GITHUB_CLIENT_SECRET,
@@ -86,7 +86,7 @@ module.exports = {
 
       return { user, token: access_token };
     },
-    postPhoto(parent, args, { db, currentUser }) {
+    postPhoto: (parent, args, { db, currentUser }) => {
       if (!currentUser) {
         throw new Error('only an authorized user can post a photo');
       }
