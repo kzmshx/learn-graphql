@@ -16,9 +16,9 @@
     "unused-imports"
   ],
   "rules": {
-    "unused-imports/no-unused-imports": "warn",
+    "unused-imports/no-unused-imports": "error",
     "import/order": [
-      "warn",
+      "error",
       {
         "groups": [
           "builtin",
