@@ -60,6 +60,9 @@
 - React環境でのeslint/prettierのセットアップ
   - [TypeScriptプロジェクトに3分でESLint/Prettierを入れる（2022年） | Zenn](https://zenn.dev/sumiren/articles/97e19ebcce8197)
   - [[React] ESLint - Reactでソースコードを分析してバグやエラーを探すため、ESLintを使う方法について説明します。](https://dev-yakuza.posstree.com/react/eslint/)
+- `pnpm run start`で`toBeInTheDocument not a function`で怒られ詰んだ、pnpmだとなるらしい
+  - [After seting up with pnpm, thne, when it runs, there is an error 'Property 'toBeInTheDocument' does not exist on type 'JestMatchers<HTMLElement>' in App.test.tsx · Issue #12622 · facebook/create-react-app | GitHub](https://github.com/facebook/create-react-app/issues/12622)
+    で解決した、訳分からん、、。
 
 ## 参照
 
