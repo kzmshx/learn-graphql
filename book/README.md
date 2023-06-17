@@ -54,6 +54,9 @@
 ### 6章 GraphQLクライアントの実装
 
 - `graphql-request`は`fetch`のGraphQL向けラッパー
+- `create-react-app`を使うけど、pnpmを使いたいので工夫、記事を参考にした
+  - [create-react-app with pnpm | DEV Community](https://dev.to/lico/set-up-create-react-app-using-pnpm-nji)
+  - [React+TypeScript環境構築(pnpm用) | Zenn](https://zenn.dev/kage1020/articles/0dd1ecc13c78be)
 
 ## 参照
 
