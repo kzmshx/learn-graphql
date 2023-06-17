@@ -57,6 +57,9 @@
 - `create-react-app`を使うけど、pnpmを使いたいので工夫、記事を参考にした
   - [create-react-app with pnpm | DEV Community](https://dev.to/lico/set-up-create-react-app-using-pnpm-nji)
   - [React+TypeScript環境構築(pnpm用) | Zenn](https://zenn.dev/kage1020/articles/0dd1ecc13c78be)
+- React環境でのeslint/prettierのセットアップ
+  - [TypeScriptプロジェクトに3分でESLint/Prettierを入れる（2022年） | Zenn](https://zenn.dev/sumiren/articles/97e19ebcce8197)
+  - [[React] ESLint - Reactでソースコードを分析してバグやエラーを探すため、ESLintを使う方法について説明します。](https://dev-yakuza.posstree.com/react/eslint/)
 
 ## 参照
 
