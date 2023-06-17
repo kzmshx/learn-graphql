@@ -1,0 +1,6 @@
+mutation populate($count: Int!) {
+  addFakeUsers(count: $count) {
+    githubUser
+    name
+  }
+}

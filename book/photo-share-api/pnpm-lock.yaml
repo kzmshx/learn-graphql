@@ -20,6 +20,9 @@ dependencies:
   graphql-playground-middleware-express:
     specifier: ^1.7.23
     version: 1.7.23(express@4.18.2)
+  graphql-request:
+    specifier: ^6.1.0
+    version: 6.1.0(graphql@16.6.0)
   mongodb:
     specifier: ^5.6.0
     version: 5.6.0
@@ -879,6 +882,14 @@ packages:
       vary: 1.1.2
     dev: false
 
+  /cross-fetch@3.1.6:
+    resolution: {integrity: sha512-riRvo06crlE8HiqOwIpQhxwdOk4fOeR7FVM/wXoxchFEqMNUjvbs3bfo4OTgMEMHzppd4DxFBDbyySj8Cv781g==}
+    dependencies:
+      node-fetch: 2.6.11
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
   /cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
@@ -1526,6 +1537,18 @@ packages:
     dependencies:
       express: 4.18.2
       graphql-playground-html: 1.6.30
+    dev: false
+
+  /graphql-request@6.1.0(graphql@16.6.0):
+    resolution: {integrity: sha512-p+XPfS4q7aIpKVcgmnZKhMNqhltk20hfXtkaIkTfjjmiKMJ5xrt5c743cL03y/K7y1rg3WrIC49xGiEQ4mxdNw==}
+    peerDependencies:
+      graphql: 14 - 16
+    dependencies:
+      '@graphql-typed-document-node/core': 3.2.0(graphql@16.6.0)
+      cross-fetch: 3.1.6
+      graphql: 16.6.0
+    transitivePeerDependencies:
+      - encoding
     dev: false
 
   /graphql-tag@2.12.6(graphql@16.6.0):

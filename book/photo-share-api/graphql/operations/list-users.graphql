@@ -1,0 +1,6 @@
+query listUsers {
+  allUsers {
+    name
+    avatar
+  }
+}

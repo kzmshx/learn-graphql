@@ -51,6 +51,10 @@
 - 現状は、InMemoryとMongoDBの2つのデータベースで簡易なAPIを実装しただけだからパフォーマンスの懸念とかセキュリティ上の懸念とか扱い方は全然見えてない
 - JSをこねこねして無理やり作り通した感があるのでTypeScriptを導入したり、ファイル・ディレクトリ構成についても学んでいきたい
 
+### 6章 GraphQLクライアントの実装
+
+- `graphql-request`は`fetch`のGraphQL向けラッパー
+
 ## 参照
 
 - [O'Reilly Japan - 初めてのGraphQL](https://www.oreilly.co.jp/books/9784873118932/)
