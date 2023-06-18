@@ -67,6 +67,10 @@
   - [React Apollo StrictMode Issue | ChatGPT](https://chat.openai.com/share/94fa4b3e-88e7-412c-bdc2-cd9ffe806a76)
   - [Apollo Boost migration | Apollo GraphQL Docs](https://www.apollographql.com/docs/react/v2/migrating/boost-migration/)
   - [React + TypeScript: Apollo ClientのGraphQLクエリを使ってみる | Qiita](https://qiita.com/FumioNonaka/items/0c6b711627e3443ff73b)
+- この本ではスキーマ設計、サーバー実装、クライアント実装の各章で「認証」「認可」について触れている。Web
+  Frameworkの解説とかだったら認証はデファクトスタンダードな実装があってそんなに丁寧に解説されない気がする
+- GraphQLでは認証周りのそういったスタンダードがないのかな？
+- GraphQLはやはり仕様であって実装ではないので、認証周りは実装者に委ねられていそう。Apolloとかがそういった実装を提供しているライブラリ・フレームワークの1つという認識でいい？
 
 ## 参照
 
