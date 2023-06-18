@@ -1,7 +1,9 @@
 import React from 'react';
 import { gql } from 'apollo-boost';
 import './App.css';
+import { BrowserRouter } from 'react-router-dom';
 import Users from './Users';
+import AuthorizedUser from './AuthorizedUser';
 
 export type User = {
   githubUser: string;
@@ -10,12 +12,19 @@ export type User = {
 };
 
 export const ROOT_QUERY = gql`
+  fragment userInfo on User {
+    githubUser
+    name
+    avatar
+  }
+
   query allUsers {
     totalUsers
     allUsers {
-      githubUser
-      name
-      avatar
+      ...userInfo
+    }
+    me {
+      ...userInfo
     }
   }
 `;
@@ -28,7 +37,21 @@ export const ADD_FAKE_USERS_MUTATION = gql`
     }
   }
 `;
+export const GITHUB_AUTH_MUTATION = gql`
+  mutation githubAuth($code: String!) {
+    githubAuth(code: $code) {
+      token
+    }
+  }
+`;
 
-const App = () => <Users />;
+const App = () => (
+  <BrowserRouter>
+    <div>
+      <AuthorizedUser />
+      <Users />
+    </div>
+  </BrowserRouter>
+);
 
 export default App;
