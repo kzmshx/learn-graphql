@@ -63,6 +63,10 @@
 - `pnpm run start`で`toBeInTheDocument not a function`で怒られ詰んだ、pnpmだとなるらしい
   - [After seting up with pnpm, thne, when it runs, there is an error 'Property 'toBeInTheDocument' does not exist on type 'JestMatchers<HTMLElement>' in App.test.tsx · Issue #12622 · facebook/create-react-app | GitHub](https://github.com/facebook/create-react-app/issues/12622)
     で解決した、訳分からん、、。
+- useQueryを使ってるのに状態が更新されなくなって困ったがChat-GPTに助けてもらった
+  - [React Apollo StrictMode Issue | ChatGPT](https://chat.openai.com/share/94fa4b3e-88e7-412c-bdc2-cd9ffe806a76)
+  - [Apollo Boost migration | Apollo GraphQL Docs](https://www.apollographql.com/docs/react/v2/migrating/boost-migration/)
+  - [React + TypeScript: Apollo ClientのGraphQLクエリを使ってみる | Qiita](https://qiita.com/FumioNonaka/items/0c6b711627e3443ff73b)
 
 ## 参照
 
