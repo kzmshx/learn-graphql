@@ -19,6 +19,15 @@ export const ROOT_QUERY = gql`
     }
   }
 `;
+export const ADD_FAKE_USERS_MUTATION = gql`
+  mutation addFakeUsers($count: Int!) {
+    addFakeUsers(count: $count) {
+      githubUser
+      name
+      avatar
+    }
+  }
+`;
 
 const App = () => <Users />;
 
