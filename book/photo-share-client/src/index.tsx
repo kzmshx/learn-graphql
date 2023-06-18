@@ -1,28 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import ApolloClient, { gql } from 'apollo-boost';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const client = new ApolloClient({ uri: 'http://localhost:4000/graphql' });
 
-const query = gql`
-  {
-    totalUsers
-    totalPhotos
-  }
-`;
-
-client
-  .query({ query })
-  .then(({ data }) => console.log('data', data))
-  .catch(console.error);
-
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+
 root.render(
   <React.StrictMode>
-    <App />
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
   </React.StrictMode>
 );
 
