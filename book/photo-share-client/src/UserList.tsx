@@ -13,7 +13,7 @@ const UserList = ({
   users: User[];
   refetchUsers: (variables?: OperationVariables | undefined) => Promise<ApolloQueryResult<any>>;
 }) => {
-  const [addFakeUsers, { loading, data }] = useMutation(ADD_FAKE_USERS_MUTATION, {
+  const [addFakeUsers, { loading }] = useMutation(ADD_FAKE_USERS_MUTATION, {
     variables: { count: 1 },
     refetchQueries: [{ query: ROOT_QUERY }],
   });

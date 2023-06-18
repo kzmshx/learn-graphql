@@ -4,7 +4,7 @@ import { ROOT_QUERY } from './App';
 import UserList from './UserList';
 
 const Users = () => {
-  const { data, loading, refetch, startPolling, stopPolling } = useQuery(ROOT_QUERY);
+  const { data, loading, refetch } = useQuery(ROOT_QUERY);
 
   if (loading) return <p>Loading users...</p>;
 
