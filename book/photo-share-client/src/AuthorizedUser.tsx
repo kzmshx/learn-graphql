@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useMutation } from 'react-apollo';
+import { useApolloClient, useMutation } from 'react-apollo';
 import { GITHUB_AUTH_MUTATION, ROOT_QUERY } from './App';
 import Me from './Me';
 
 const AuthorizedUser = () => {
   const { search } = useLocation();
   const navigate = useNavigate();
+  const client = useApolloClient();
 
   const [state, setState] = useState({ signingIn: false });
 
@@ -39,6 +40,10 @@ const AuthorizedUser = () => {
 
   const logout = () => {
     localStorage.removeItem('token');
+    const data = client.readQuery({ query: ROOT_QUERY });
+    data.me = null;
+    client.writeQuery({ query: ROOT_QUERY, data });
+    setState({ signingIn: false });
   };
 
   return <Me signingIn={state.signingIn} requestCode={requestCode} logout={logout} />;
