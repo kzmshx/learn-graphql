@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useMutation } from 'react-apollo';
 import { GITHUB_AUTH_MUTATION, ROOT_QUERY } from './App';
+import Me from './Me';
 
 const AuthorizedUser = () => {
   const { search } = useLocation();
@@ -36,11 +37,11 @@ const AuthorizedUser = () => {
     window.location.assign(`https://github.com/login/oauth/authorize?client_id=${clientID}&scope=user`);
   };
 
-  return (
-    <button onClick={requestCode} disabled={state.signingIn}>
-      Sign In with GitHub
-    </button>
-  );
+  const logout = () => {
+    localStorage.removeItem('token');
+  };
+
+  return <Me signingIn={state.signingIn} requestCode={requestCode} logout={logout} />;
 };
 
 export default AuthorizedUser;

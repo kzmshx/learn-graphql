@@ -6,7 +6,18 @@ import { ApolloProvider } from 'react-apollo';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const client = new ApolloClient({ uri: 'http://localhost:4000/graphql' });
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+  // Add the authorization header to each request
+  request: operation => {
+    operation.setContext((context: any) => ({
+      headers: {
+        ...context.headers,
+        Authorization: localStorage.getItem('token'),
+      },
+    }));
+  },
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
