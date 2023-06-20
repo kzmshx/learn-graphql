@@ -1,9 +1,12 @@
 const { GraphQLScalarType } = require('graphql/type');
+const { PubSub } = require('graphql-subscriptions');
 
 const photos = require('./data/photos.json');
 const tags = require('./data/tags.json');
 const users = require('./data/users.json');
 const { authorizeWithGitHub } = require('./lib');
+
+const pubsub = new PubSub();
 
 module.exports = {
   DateTime: new GraphQLScalarType({
@@ -110,7 +113,7 @@ module.exports = {
 
       return { user, token: access_token };
     },
-    postPhoto: (parent, args, { db, currentUser }) => {
+    postPhoto: async (parent, args, { db, currentUser }) => {
       if (!currentUser) {
         throw new Error('only an authorized user can post a photo');
       }
@@ -122,10 +125,16 @@ module.exports = {
       };
 
       const { insertedId } = db.collection('photos').insertOne(newPhoto);
-
       newPhoto.id = insertedId;
 
+      await pubsub.publish('photo-added', { newPhoto });
+
       return newPhoto;
+    },
+  },
+  Subscription: {
+    newPhoto: {
+      subscribe: () => pubsub.asyncIterator(['photo-added']),
     },
   },
 };

@@ -1,0 +1,12 @@
+subscription subscribeNewPhoto {
+  newPhoto {
+    id
+    name
+    description
+    category
+    postedBy {
+      githubUser
+      name
+    }
+  }
+}

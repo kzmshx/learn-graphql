@@ -52,3 +52,7 @@ type Mutation {
   githubAuth(code: String!): AuthPayload!
   postPhoto(input: PostPhotoInput!): Photo!
 }
+
+type Subscription {
+  newPhoto: Photo!
+}

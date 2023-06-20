@@ -90,9 +90,10 @@
   - WebSocket → TCPソケット上で全二重双方向通信
   - Polling → HTTPリクエストを定期的に送信してデータを取得
 - Subscriptionの実装でまたしても本のコードが使えない
-  - 動いたけど `subscription-transport-ws` も deprecated になってる
-  - 参照
-    - [Migrating to Apollo Server 3 | Apollo GraphQL Docs](https://www.apollographql.com/docs/apollo-server/v3/migration/)
+  - [Migrating to Apollo Server 3 | Apollo GraphQL Docs](https://www.apollographql.com/docs/apollo-server/v3/migration/)
+    - 動いたけど `subscription-transport-ws` も deprecated になってる
+- `apollo-server-express`から`PubSub`が取れない
+  - [Subscriptions in Apollo Server | Apollo GraphQL Docs](https://www.apollographql.com/docs/apollo-server/v3/data/subscriptions#the-pubsub-class)
 
 ## 参照
 
