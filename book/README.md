@@ -76,6 +76,8 @@
 - `react-apollo`、`apollo-boost`、`apollo-cache-persist`を使ってる箇所を`@apollo/client`、`apollo3-cache-persist`で書き直した、大変だった
   - でもそれまで微妙に動いてなかった箇所が動くようになった
   - 具体的には `useQuery` とか `useApolloClient` を使ってる部分でリアクティブが効かなくなってたのが直った
+- useEffectの中で async/await を使う方法で迷った
+  - [useEffectに非同期関数を設定する方法 | Zenn](https://zenn.dev/syu/articles/b97fb155137d1f)
 
 ## 参照
 

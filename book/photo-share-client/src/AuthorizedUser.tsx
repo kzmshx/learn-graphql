@@ -24,13 +24,15 @@ const AuthorizedUser = () => {
   });
 
   useEffect(() => {
-    if (search.match(/code=/)) {
-      // Disable sign in button
-      setState({ signingIn: true });
-      // Authorize user
-      const code = search.replace('?code=', '');
-      githubAuth({ variables: { code } });
-    }
+    (async () => {
+      if (search.match(/code=/)) {
+        // Disable sign in button
+        setState({ signingIn: true });
+        // Authorize user
+        const code = search.replace('?code=', '');
+        await githubAuth({ variables: { code } });
+      }
+    })();
   }, []);
 
   const requestCode = () => {
