@@ -79,6 +79,14 @@
 - useEffectの中で async/await を使う方法で迷った
   - [useEffectに非同期関数を設定する方法 | Zenn](https://zenn.dev/syu/articles/b97fb155137d1f)
 
+### 7章 GraphQLの実戦投入にあたって
+
+- この章で扱うトピック
+  - リアルタイムのデータ更新
+  - APIのセキュリティ
+  - フロントエンドとバックエンドの分業
+  - 漸進的なGraphQLへの移行
+
 ## 参照
 
 - [O'Reilly Japan - 初めてのGraphQL](https://www.oreilly.co.jp/books/9784873118932/)
