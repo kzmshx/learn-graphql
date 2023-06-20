@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useApolloClient, useMutation } from 'react-apollo';
+import { useApolloClient, useMutation } from '@apollo/client';
 import { GITHUB_AUTH_MUTATION, ROOT_QUERY } from './App';
 import Me from './Me';
 
@@ -38,12 +38,16 @@ const AuthorizedUser = () => {
     window.location.assign(`https://github.com/login/oauth/authorize?client_id=${clientID}&scope=user`);
   };
 
-  const logout = () => {
+  const logout = async () => {
     localStorage.removeItem('token');
     const data = client.readQuery({ query: ROOT_QUERY });
-    data.me = null;
-    client.writeQuery({ query: ROOT_QUERY, data });
-    setState({ signingIn: false });
+    client.writeQuery({
+      query: ROOT_QUERY,
+      data: {
+        ...data,
+        me: null,
+      },
+    });
   };
 
   return <Me signingIn={state.signingIn} requestCode={requestCode} logout={logout} />;

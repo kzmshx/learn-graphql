@@ -1,10 +1,10 @@
 import React from 'react';
-import { useQuery } from 'react-apollo';
+import { useQuery } from '@apollo/client';
 import CurrentUser from './CurrentUser';
 import { ROOT_QUERY } from './App';
 
 const Me = ({ signingIn, requestCode, logout }: any) => {
-  const { loading, data } = useQuery(ROOT_QUERY);
+  const { data, loading } = useQuery(ROOT_QUERY);
 
   if (data?.me) {
     return <CurrentUser {...data.me} logout={logout} />;

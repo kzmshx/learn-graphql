@@ -1,14 +1,21 @@
 import React from 'react';
-import { gql } from 'apollo-boost';
+import { gql } from '@apollo/client';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import Users from './Users';
 import AuthorizedUser from './AuthorizedUser';
 
 export type User = {
+  id: string;
   githubUser: string;
   name: string;
   avatar: string;
+};
+
+export type RootQueryType = {
+  totalUsers: number;
+  allUsers: User[];
+  me: User;
 };
 
 export const ROOT_QUERY = gql`

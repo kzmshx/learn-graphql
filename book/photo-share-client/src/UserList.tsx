@@ -1,8 +1,7 @@
 import React from 'react';
-import { ApolloQueryResult, OperationVariables } from 'apollo-boost';
-import { useMutation } from 'react-apollo';
+import { ApolloQueryResult, OperationVariables, useMutation } from '@apollo/client';
 import UserListItem from './UserListItem';
-import { ADD_FAKE_USERS_MUTATION, ROOT_QUERY, User } from './App';
+import { ADD_FAKE_USERS_MUTATION, ROOT_QUERY, RootQueryType, User } from './App';
 
 const UserList = ({
   count,
@@ -11,11 +10,23 @@ const UserList = ({
 }: {
   count: number;
   users: User[];
-  refetchUsers: (variables?: OperationVariables | undefined) => Promise<ApolloQueryResult<any>>;
+  refetchUsers: (variables?: OperationVariables | undefined) => Promise<ApolloQueryResult<RootQueryType>>;
 }) => {
   const [addFakeUsers, { loading }] = useMutation(ADD_FAKE_USERS_MUTATION, {
     variables: { count: 1 },
-    refetchQueries: [{ query: ROOT_QUERY }],
+    update(cache, { data: { addFakeUsers } }) {
+      const data = cache.readQuery<RootQueryType>({ query: ROOT_QUERY });
+      if (data) {
+        cache.writeQuery({
+          query: ROOT_QUERY,
+          data: {
+            ...data,
+            totalUsers: data.totalUsers + addFakeUsers.length,
+            allUsers: [...data.allUsers, ...addFakeUsers],
+          },
+        });
+      }
+    },
   });
 
   return (
