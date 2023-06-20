@@ -16,6 +16,7 @@
     "env:init": "cp .env.tpl .env"
   },
   "dependencies": {
+    "@graphql-tools/schema": "^10.0.0",
     "apollo-server-express": "^3.12.0",
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
@@ -23,7 +24,8 @@
     "graphql-playground-middleware-express": "^1.7.23",
     "graphql-request": "^6.1.0",
     "mongodb": "^5.6.0",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "subscriptions-transport-ws": "^0.11.0"
   },
   "devDependencies": {
     "eslint": "^8.42.0",

@@ -89,6 +89,10 @@
 - WebSocketによるリアルタイムのデータ更新は、6章で試したポーリングによる更新とは別
   - WebSocket → TCPソケット上で全二重双方向通信
   - Polling → HTTPリクエストを定期的に送信してデータを取得
+- Subscriptionの実装でまたしても本のコードが使えない
+  - 動いたけど `subscription-transport-ws` も deprecated になってる
+  - 参照
+    - [Migrating to Apollo Server 3 | Apollo GraphQL Docs](https://www.apollographql.com/docs/apollo-server/v3/migration/)
 
 ## 参照
 
