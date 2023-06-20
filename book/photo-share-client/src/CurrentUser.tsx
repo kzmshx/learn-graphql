@@ -1,6 +1,12 @@
 import React from 'react';
 
-const CurrentUser = ({ name, avatar, logout }: { name: string; avatar: string; logout: () => void }) => (
+export type CurrentUserProps = {
+  name: string;
+  avatar: string;
+  logout: () => void;
+};
+
+const CurrentUser = ({ name, avatar, logout }: CurrentUserProps) => (
   <div>
     <img src={avatar} width={48} height={48} alt="" />
     <h1>{name}</h1>

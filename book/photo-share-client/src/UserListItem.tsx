@@ -1,6 +1,11 @@
 import React from 'react';
 
-const UserListItem = ({ name, avatar }: { name: string; avatar: string }) => (
+export type UserListItemProps = {
+  name: string;
+  avatar: string;
+};
+
+const UserListItem = ({ name, avatar }: UserListItemProps) => (
   <li>
     <div>
       <img src={avatar} width={48} height={48} alt="" />

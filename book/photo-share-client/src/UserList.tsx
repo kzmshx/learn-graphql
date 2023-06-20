@@ -3,15 +3,13 @@ import { ApolloQueryResult, OperationVariables, useMutation } from '@apollo/clie
 import UserListItem from './UserListItem';
 import { ADD_FAKE_USERS_MUTATION, ROOT_QUERY, RootQueryType, User } from './App';
 
-const UserList = ({
-  count,
-  users,
-  refetchUsers,
-}: {
+export type UserListProps = {
   count: number;
   users: User[];
   refetchUsers: (variables?: OperationVariables | undefined) => Promise<ApolloQueryResult<RootQueryType>>;
-}) => {
+};
+
+const UserList = ({ count, users, refetchUsers }: UserListProps) => {
   const [addFakeUsers, { loading }] = useMutation(ADD_FAKE_USERS_MUTATION, {
     variables: { count: 1 },
     update(cache, { data: { addFakeUsers } }) {
