@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
+import { ROOT_QUERY } from '../App';
 import CurrentUser from './CurrentUser';
-import { ROOT_QUERY } from './App';
 
 export type MeProps = {
   signingIn: boolean;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useApolloClient, useMutation } from '@apollo/client';
-import { GITHUB_AUTH_MUTATION, ROOT_QUERY } from './App';
+import { GITHUB_AUTH_MUTATION, ROOT_QUERY } from '../App';
 import Me from './Me';
 
 const AuthorizedUser = () => {

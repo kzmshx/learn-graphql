@@ -2,8 +2,8 @@ import React from 'react';
 import { gql } from '@apollo/client';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
-import Users from './Users';
-import AuthorizedUser from './AuthorizedUser';
+import Users from './components/Users';
+import AuthorizedUser from './components/AuthorizedUser';
 
 export type User = {
   id: string;

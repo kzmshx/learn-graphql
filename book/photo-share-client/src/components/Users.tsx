@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { ROOT_QUERY } from './App';
+import { ROOT_QUERY } from '../App';
 import UserList from './UserList';
 
 const Users = () => {

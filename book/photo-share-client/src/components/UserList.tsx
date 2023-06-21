@@ -1,7 +1,7 @@
 import React from 'react';
 import { ApolloQueryResult, OperationVariables, useMutation } from '@apollo/client';
+import { ADD_FAKE_USERS_MUTATION, ROOT_QUERY, RootQueryType, User } from '../App';
 import UserListItem from './UserListItem';
-import { ADD_FAKE_USERS_MUTATION, ROOT_QUERY, RootQueryType, User } from './App';
 
 export type UserListProps = {
   count: number;
