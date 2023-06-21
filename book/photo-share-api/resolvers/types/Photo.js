@@ -1,5 +1,5 @@
-const tags = require('../data/tags.json');
-const users = require('../data/users.json');
+const tags = require('../../data/tags.json');
+const users = require('../../data/users.json');
 
 module.exports = {
   id: parent => {

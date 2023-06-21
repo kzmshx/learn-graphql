@@ -1,5 +1,5 @@
-const photos = require('../data/photos.json');
-const tags = require('../data/tags.json');
+const photos = require('../../data/photos.json');
+const tags = require('../../data/tags.json');
 
 module.exports = {
   postedPhotos: ({ githubUser }, args, { db }) => {
