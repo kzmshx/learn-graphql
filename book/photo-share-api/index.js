@@ -13,7 +13,7 @@ const { MongoClient } = require('mongodb');
 const { WebSocketServer } = require('ws');
 
 const resolvers = require('./resolvers');
-const typeDefs = readFileSync(path.join(__dirname, 'graphql/schema.graphql'), { encoding: 'utf-8' });
+const typeDefs = readFileSync(path.join(__dirname, 'typeDefs.graphql'), { encoding: 'utf-8' });
 
 dotenv.config();
 

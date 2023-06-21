@@ -1,3 +1,5 @@
+const { PubSub } = require('graphql-subscriptions');
+
 const requestGitHubToken = credentials =>
   fetch('https://github.com/login/oauth/access_token', {
     method: 'POST',
@@ -32,4 +34,8 @@ const authorizeWithGitHub = async credentials => {
   return { ...githubUser, access_token };
 };
 
-module.exports = { authorizeWithGitHub };
+const pubsub = new PubSub();
+
+const usePubSub = () => pubsub;
+
+module.exports = { authorizeWithGitHub, usePubSub };
