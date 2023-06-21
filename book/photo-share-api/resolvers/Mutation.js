@@ -15,6 +15,10 @@ module.exports = {
 
     await db.collection('users').insertMany(users);
 
+    for (const newUser of users) {
+      await pubsub.publish('user-added', { newUser });
+    }
+
     return users;
   },
   fakeUserAuth: async (parent, { githubUser }, { db }) => {
@@ -54,6 +58,8 @@ module.exports = {
     );
 
     const user = await db.collection('users').findOne({ githubUser: login }, { _id: 0 });
+
+    await pubsub.publish('user-added', { newUser: user });
 
     return { user, token: access_token };
   },
