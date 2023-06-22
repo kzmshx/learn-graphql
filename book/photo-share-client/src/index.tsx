@@ -1,13 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { ApolloClient, ApolloProvider, createHttpLink, IdGetterObj, InMemoryCache } from '@apollo/client';
+import { ApolloClient, ApolloProvider, createHttpLink, IdGetterObj, InMemoryCache, split } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { LocalStorageWrapper, persistCache } from 'apollo3-cache-persist';
+import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
+import { createClient } from 'graphql-ws';
+import { getMainDefinition } from '@apollo/client/utilities';
 import App, { User } from './App';
 import reportWebVitals from './reportWebVitals';
 
-// Prepare the cache
+// Prepare links
+const wsLink = new GraphQLWsLink(createClient({ url: process.env.REACT_APP_WS_URI as string }));
+const httpLink = createHttpLink({ uri: process.env.REACT_APP_API_URI });
+const authLink = setContext((_, { headers }) => ({
+  headers: {
+    ...headers,
+    authorization: localStorage.getItem('token'),
+  },
+}));
+const httpAuthLink = authLink.concat(httpLink);
+const link = split(
+  ({ query }): boolean => {
+    const def = getMainDefinition(query);
+    return def.kind === 'OperationDefinition' && def.operation === 'subscription';
+  },
+  wsLink,
+  httpAuthLink
+);
+
+// Prepare cache
 const cache = new InMemoryCache({
   dataIdFromObject: (o: IdGetterObj) => {
     switch (o.__typename) {
@@ -18,26 +40,11 @@ const cache = new InMemoryCache({
     }
   },
 });
-await persistCache({
-  cache,
-  storage: new LocalStorageWrapper(localStorage),
-});
+const storage = new LocalStorageWrapper(localStorage);
+await persistCache({ cache, storage });
 
 // Initialize ApolloClient
-const httpLink = createHttpLink({ uri: process.env.REACT_APP_API_URI });
-const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('token');
-  return {
-    headers: {
-      ...headers,
-      Authorization: token,
-    },
-  };
-});
-const client = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache,
-});
+const client = new ApolloClient({ link, cache });
 
 // Render the app
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
