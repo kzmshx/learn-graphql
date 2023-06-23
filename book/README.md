@@ -98,6 +98,38 @@
   - Subscriptionがサーバーの設定周り（Contextの扱い）で動かないが、ESMモジュールにもApolloライブラリにも詳しくなさすぎてデバッグが非常に困難
   - → サンプルコードの実装は一旦諦める
   - → でもサブスクリプションの実装例の意味は分かったし、挙動は実際に確かめていないが理解できた
+- GraphQLのセキュリティ
+  - リクエストタイムアウト
+  - データ量制限
+  - クエリ深度制限 `graphql-depth-limit`
+  - クエリ複雑度（コスト）制限 `graphql-validation-complexity`
+    - クエリの複雑度（コスト）を各フィールドに設定した複雑度の合計でとらえる手法、おもろい
+  - パフォーマンス監視
+    - Apollo Engine
+      - GraphQLは柔軟性のかわりにパフォーマンスの問題が発生しやすい（予測がしづらい）ので監視体制を整えるのは他の手法よりも重要そう
+- 発展的な内容
+  - Schema Stitching
+  - **Prisma**
+    - データベースによらず、既存のデータベースをGraphQL APIに変えるツール、どゆことだ？
+  - AWS AppSync
+
+### Relay
+
+- React+GraphQLでのフロントエンド開発のためのライブラリ
+- Relayを便利にするために、GraphQLスキーマの仕様を追加している
+  - Global Object Identification
+    - 全データを共通IDで一意に識別 → 再取得を容易に
+    - すごい運用大変そう
+    - 技術書典は `TableName:ID` で一意に識別してる
+    - GitHubは `IdSpecVersion:ResouceName:ID` で一意に識別してるっぽい
+  - Cursor Connections
+    - ページング手法
+    - メリット
+      - 幅広いDBにおいて実装可能
+      - 取得予定のリソースの数が事前に計算可能になる → データ量制限が容易になる
+  - Input Object Mutations
+  - Mutation Updater
+    - Mutationによるデータ変更時に、サーバー側で変更したデータのIDをレスポンスで返すことで、クライアント側がデータ変更を検知し、キャッシュの更新等を行うことができる
 
 ## 参照
 
