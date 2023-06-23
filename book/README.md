@@ -94,6 +94,10 @@
     - 動いたけど `subscription-transport-ws` も deprecated になってる
 - `apollo-server-express`から`PubSub`が取れない
   - [Subscriptions in Apollo Server | Apollo GraphQL Docs](https://www.apollographql.com/docs/apollo-server/v3/data/subscriptions#the-pubsub-class)
+- Subscription の実装途中で、いよいよ本のコードと自分のコードの乖離が大きくなってきた
+  - Subscriptionがサーバーの設定周り（Contextの扱い）で動かないが、ESMモジュールにもApolloライブラリにも詳しくなさすぎてデバッグが非常に困難
+  - → サンプルコードの実装は一旦諦める
+  - → でもサブスクリプションの実装例の意味は分かったし、挙動は実際に確かめていないが理解できた
 
 ## 参照
 
