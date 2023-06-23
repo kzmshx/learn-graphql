@@ -1,5 +1,5 @@
-const { authorizeWithGitHub } = require('../lib');
-const { usePubSub } = require('../lib');
+const { authorizeWithGitHub } = require('../../lib');
+const { usePubSub } = require('../../lib');
 
 const pubsub = usePubSub();
 

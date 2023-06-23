@@ -1,6 +1,4 @@
-const { readFileSync } = require('fs');
 const { createServer } = require('http');
-const path = require('path');
 
 const { makeExecutableSchema } = require('@graphql-tools/schema');
 const { ApolloServerPluginDrainHttpServer } = require('apollo-server-core');
@@ -12,8 +10,7 @@ const { useServer } = require('graphql-ws/lib/use/ws');
 const { MongoClient } = require('mongodb');
 const { WebSocketServer } = require('ws');
 
-const resolvers = require('./resolvers');
-const typeDefs = readFileSync(path.join(__dirname, 'typeDefs.graphql'), { encoding: 'utf-8' });
+const { typeDefs, resolvers } = require('./schema');
 
 dotenv.config();
 
@@ -56,8 +53,8 @@ const findUserByGitHubToken = async (db, githubToken) => {
   const serverCleanup = useServer(
     {
       schema,
-      context: async ctx => {
-        const currentUser = await findUserByGitHubToken(db, ctx.connectionParams.Authorization);
+      context: async (ctx, message, args) => {
+        const currentUser = await findUserByGitHubToken(db, ctx.connectionParams.authorization);
         return { db, currentUser };
       },
     },

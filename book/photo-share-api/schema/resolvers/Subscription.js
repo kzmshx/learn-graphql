@@ -1,4 +1,4 @@
-const { usePubSub } = require('../lib');
+const { usePubSub } = require('../../lib');
 
 const pubsub = usePubSub();
 
