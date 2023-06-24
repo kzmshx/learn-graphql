@@ -1,5 +1,7 @@
 # 初めてのGraphQL - Webサービスを作って学ぶ新世代API
 
+https://www.oreilly.co.jp/books/9784873118932/
+
 ## メモ
 
 ### 1章 GraphQLへようこそ
@@ -147,5 +149,4 @@
 
 ## 参照
 
-- [O'Reilly Japan - 初めてのGraphQL](https://www.oreilly.co.jp/books/9784873118932/)
 - [MoonHighway/learning-graphql: The code samples for Learning GraphQL by Eve Porcello and Alex Banks, published by O'Reilly Media](https://github.com/MoonHighway/learning-graphql)

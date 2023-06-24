@@ -4,7 +4,7 @@ GraphQLを学ぶ。
 
 ## ToDo
 
-- [x] [初めてのGraphQL | O'Reilly Japan](https://www.oreilly.co.jp/books/9784873118932/)
+- [x] [初めてのGraphQL | O'Reilly Japan](./book/README.md)
 - [ ] [Building a GraphQL Server with TypeScript & Apollo](https://www.howtographql.com/typescript-apollo/0-introduction/)
 - [ ] [Building a GraphQL Server with Go Backend Tutorial](https://www.howtographql.com/graphql-go/0-introduction/)
 - [ ] [Learn with our GraphQL Tutorials, Examples, and Training | GraphQL Tutorials](https://www.apollographql.com/tutorials/)
