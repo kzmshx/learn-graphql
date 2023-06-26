@@ -1,0 +1,23 @@
+{
+  "name": "messages-api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Messages API",
+  "license": "UNLICENSED",
+  "author": "Kazumasa Hirata",
+  "scripts": {
+    "dev": "ts-node-dev ./src/index.ts",
+    "lint": "eslint '**/*.{js,ts}' && prettier '**/*.{js,json,ts}' --check",
+    "fmt": "eslint '**/*.{js,ts}' --fix && prettier '**/*.{js,json,ts}' --write"
+  },
+  "devDependencies": {
+    "@types/node": "^20.3.1",
+    "@typescript-eslint/eslint-plugin": "^5.60.0",
+    "@typescript-eslint/parser": "^5.60.0",
+    "eslint": "^8.43.0",
+    "eslint-config-prettier": "^8.8.0",
+    "prettier": "^2.8.8",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.1.3"
+  }
+}
