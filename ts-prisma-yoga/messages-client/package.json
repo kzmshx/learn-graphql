@@ -1,6 +1,8 @@
 {
   "name": "messages-client",
   "version": "0.0.0",
+  "description": "Messages Client",
+  "license": "UNLICENSED",
   "private": true,
   "type": "module",
   "scripts": {
