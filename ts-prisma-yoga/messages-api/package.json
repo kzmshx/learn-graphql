@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "author": "Kazumasa Hirata",
   "scripts": {
+    "build": "pnpm i && npx prisma generate",
     "dev": "ts-node-dev ./src/index.ts",
     "fmt": "eslint '**/*.{js,ts}' --fix && prettier '**/*.{js,json,ts}' --write",
     "lint": "eslint '**/*.{js,ts}' && prettier '**/*.{js,json,ts}' --check"
@@ -13,6 +14,7 @@
   "dependencies": {
     "@graphql-yoga/node": "^3.9.1",
     "@pothos/core": "^3.30.0",
+    "@pothos/plugin-prisma": "^3.52.0",
     "@prisma/client": "4.16.1",
     "graphql": "^16.7.1",
     "graphql-scalars": "^1.22.2"

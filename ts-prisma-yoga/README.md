@@ -15,11 +15,13 @@
 
 - RailwayでDBをプロビジョニングするまでが速すぎてびっくり
 - Prismaのスキーマで、あるモデルから別のモデルを参照するコードを書いたら、自動的にもう一方のスキーマのコードが全部補完された、すごい
+
+### Part 3: GraphQL API
+
 - GraphQLのスキーマ定義のアプローチには「Code-first」と「SDL-first」がある
   - 鷲本でやったのは「SDL-first」
   - この記事は「Code-first」を採用していて、そのためのツールが `Pothos`
 - 鷲本でも言及されてた `graphql-scalars` をこの記事では使っていく
-
-### Part 3: GraphQL API
+- PrismaとPothosの連携で色んなことがスムーズにできるようになってるんだろうことは分かるんだが、手を動かす部分が少なすぎて何が起きてるのか今のところさっぱり分からん
 
 ### Part 4: Codegen & Deployment
