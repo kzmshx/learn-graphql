@@ -11,7 +11,9 @@
     "lint": "eslint '**/*.{js,ts}' && prettier '**/*.{js,json,ts}' --check"
   },
   "dependencies": {
-    "@prisma/client": "4.16.1"
+    "@graphql-yoga/node": "^3.9.1",
+    "@prisma/client": "4.16.1",
+    "graphql": "^16.7.1"
   },
   "devDependencies": {
     "@types/node": "^20.3.1",
