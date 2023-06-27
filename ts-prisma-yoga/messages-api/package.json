@@ -7,8 +7,11 @@
   "author": "Kazumasa Hirata",
   "scripts": {
     "dev": "ts-node-dev ./src/index.ts",
-    "lint": "eslint '**/*.{js,ts}' && prettier '**/*.{js,json,ts}' --check",
-    "fmt": "eslint '**/*.{js,ts}' --fix && prettier '**/*.{js,json,ts}' --write"
+    "fmt": "eslint '**/*.{js,ts}' --fix && prettier '**/*.{js,json,ts}' --write",
+    "lint": "eslint '**/*.{js,ts}' && prettier '**/*.{js,json,ts}' --check"
+  },
+  "dependencies": {
+    "@prisma/client": "4.16.1"
   },
   "devDependencies": {
     "@types/node": "^20.3.1",
