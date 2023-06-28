@@ -32,3 +32,5 @@
   - GraphQL CodegenがAPIのGraphQLスキーマを読み、フロントエンドのための型を生成する
 - `urql`はGraphQLクライアントライブラリ
   - `Apollo` や `Relay` が競合にあたる
+- `Render`はWebアプリケーションホスティングサービス
+  - https://render.com/
