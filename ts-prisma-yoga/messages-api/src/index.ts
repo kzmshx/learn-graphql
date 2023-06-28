@@ -1,8 +1,11 @@
 import { createServer } from 'node:http'
 import { createYoga } from '@graphql-yoga/node'
 import { schema } from './schema'
+import dotenv from 'dotenv'
 
-const port = Number(process.env.PORT) || 4000
+dotenv.config()
+
+const port = Number(process.env.API_PORT) || 4000
 
 const yoga = createYoga({ schema })
 const server = createServer(yoga)
