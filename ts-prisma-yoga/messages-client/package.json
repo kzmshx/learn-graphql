@@ -1,9 +1,9 @@
 {
   "name": "messages-client",
   "version": "0.0.0",
+  "private": true,
   "description": "Messages Client",
   "license": "UNLICENSED",
-  "private": true,
   "type": "module",
   "scripts": {
     "build": "tsc && vite build",
@@ -11,6 +11,7 @@
     "dev": "vite",
     "fmt": "eslint '{**/*,*}.{js,ts,tsx}' --fix && prettier '{**/*,*}.{cjs,ts,tsx,css,json}' --write",
     "lint": "eslint '{**/*,*}.{js,ts,tsx}'",
+    "make:env": "cp .env.tpl .env",
     "preview": "vite preview"
   },
   "dependencies": {
