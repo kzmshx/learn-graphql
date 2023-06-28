@@ -5,8 +5,8 @@ GraphQLを学ぶ。
 ## ToDo
 
 - [x] [初めてのGraphQL | O'Reilly Japan](./book/README.md)
-- [ ] [Build a Fully Type-Safe Application with GraphQL, Prisma & React | Prisma](./ts-prisma-yoga/README.md)
-- [ ] [Building a GraphQL Server with TypeScript & Apollo](./ts-apollo/README.md)
+- [x] [Build a Fully Type-Safe Application with GraphQL, Prisma & React | Prisma](./ts-prisma-yoga/README.md)
+- [x] [Building a GraphQL Server with TypeScript & Apollo](./ts-apollo/README.md)
 - [ ] [Building a GraphQL Server with Go Backend Tutorial](https://www.howtographql.com/graphql-go/0-introduction/)
 - [ ] [Learn with our GraphQL Tutorials, Examples, and Training | GraphQL Tutorials](https://www.apollographql.com/tutorials/)
 - [ ] [Introduction | GraphQL Yoga](https://the-guild.dev/graphql/yoga-server/tutorial/basic)
