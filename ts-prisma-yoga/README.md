@@ -34,3 +34,6 @@
   - `Apollo` や `Relay` が競合にあたる
 - `Render`はWebアプリケーションホスティングサービス
   - https://render.com/
+- `Render`でNodeバージョンが古くなったり新しくなったりしてデプロイが失敗する問題に少し詰まった
+  - [Specifying a Node Version | Render](https://render.com/docs/node-version)
+  - package.jsonの `engines` で `"node": ">=19.8.1 <20"` のように指定して解決した
