@@ -30,3 +30,5 @@
   - Prismaがデータベーススキーマに基づいて型を生成する
   - PothosがPrismaが生成した型を利用し、GraphQLスキーマを生成しAPIを公開する
   - GraphQL CodegenがAPIのGraphQLスキーマを読み、フロントエンドのための型を生成する
+- `urql`はGraphQLクライアントライブラリ
+  - `Apollo` や `Relay` が競合にあたる
