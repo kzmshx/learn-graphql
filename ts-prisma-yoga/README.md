@@ -37,3 +37,10 @@
 - `Render`でNodeバージョンが古くなったり新しくなったりしてデプロイが失敗する問題に少し詰まった
   - [Specifying a Node Version | Render](https://render.com/docs/node-version)
   - package.jsonの `engines` で `"node": ">=19.8.1 <20"` のように指定して解決した
+
+## 感想
+
+- 各々の技術の紹介内容はかなり薄かったけど、Vite、Tailwind CSS、Railway、Prisma、Pothos、GraphQL Codegen、urql、Renderと初めて触るツール・技術てんこ盛りで楽しかった
+- 他のハンズオンやったり自分でアプリケーション作っていって各技術には慣れていきたい
+- スキーマ定義とかGraphQL周りのツールの利便性はもちろんだが、Railway/Renderなどのプロビジョニング、ホスティングサービスがすごい開発生産性を高めてくれる存在になってるなと感じた
+  - 今まではAWSとかで構成考えないとみたいなのが何となくあったけど、一人でサービス立てたりするんならもうこれでいいじゃんという
