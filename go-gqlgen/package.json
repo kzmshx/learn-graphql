@@ -1,0 +1,11 @@
+{
+  "name": "go-gqlgen",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "fmt": "prettier '{**/*,*}.{json,graphql,graphqls}' --write"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.8"
+  }
+}
