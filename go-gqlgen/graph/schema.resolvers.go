@@ -18,7 +18,15 @@ func (r *mutationResolver) CreateUser(ctx context.Context, input model.NewUser) 
 
 // CreateLink is the resolver for the createLink field.
 func (r *mutationResolver) CreateLink(ctx context.Context, input model.NewLink) (*model.Link, error) {
-	panic(fmt.Errorf("not implemented: CreateLink - createLink"))
+	var user model.User
+	user.Name = "test"
+
+	var link model.Link
+	link.Address = input.Address
+	link.Title = input.Title
+	link.User = &user
+
+	return &link, nil
 }
 
 // Login is the resolver for the login field.
