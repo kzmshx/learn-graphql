@@ -9,6 +9,7 @@ require (
 
 require (
 	github.com/agnivade/levenshtein v1.1.1 // indirect
+	github.com/go-chi/chi v1.5.4 // indirect
 	github.com/go-sql-driver/mysql v1.7.1 // indirect
 	github.com/golang-migrate/migrate v3.5.4+incompatible // indirect
 	github.com/golang-migrate/migrate/v4 v4.16.2 // indirect
