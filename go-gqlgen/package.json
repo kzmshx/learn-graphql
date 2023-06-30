@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "docker:down": "docker compose down",
+    "docker:in:mysql": "docker exec -it mysql bash",
+    "docker:up": "docker compose up -d",
     "fmt": "prettier '{**/*,*}.{json,graphql,graphqls}' --write"
   },
   "devDependencies": {
