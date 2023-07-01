@@ -7,6 +7,8 @@ package graph
 import (
 	"context"
 	"fmt"
+	"github.com/kzmshx/learn-graphql/go-gqlgen/internal/links"
+	"strconv"
 
 	"github.com/kzmshx/learn-graphql/go-gqlgen/graph/model"
 )
@@ -18,15 +20,11 @@ func (r *mutationResolver) CreateUser(ctx context.Context, input model.NewUser) 
 
 // CreateLink is the resolver for the createLink field.
 func (r *mutationResolver) CreateLink(ctx context.Context, input model.NewLink) (*model.Link, error) {
-	var user model.User
-	user.Name = "test"
-
-	var link model.Link
-	link.Address = input.Address
+	var link links.Link
 	link.Title = input.Title
-	link.User = &user
-
-	return &link, nil
+	link.Address = input.Address
+	linkID := link.Save()
+	return &model.Link{ID: strconv.FormatInt(linkID, 10), Title: link.Title, Address: link.Address}, nil
 }
 
 // Login is the resolver for the login field.
