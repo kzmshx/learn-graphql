@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/kzmshx/learn-graphql/go-gqlgen/internal/auth"
 	database "github.com/kzmshx/learn-graphql/go-gqlgen/internal/pkg/db/mysql"
 	"log"
 	"net/http"
@@ -21,6 +22,7 @@ func main() {
 	}
 
 	router := chi.NewRouter()
+	router.Use(auth.Middleware())
 
 	database.InitDB()
 	defer database.CloseDB()
