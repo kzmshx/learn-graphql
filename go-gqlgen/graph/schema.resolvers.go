@@ -7,6 +7,7 @@ package graph
 import (
 	"context"
 	"fmt"
+	"github.com/kzmshx/learn-graphql/go-gqlgen/internal/auth"
 	"github.com/kzmshx/learn-graphql/go-gqlgen/internal/links"
 	"github.com/kzmshx/learn-graphql/go-gqlgen/internal/users"
 	"github.com/kzmshx/learn-graphql/go-gqlgen/pkg/jwt"
@@ -32,11 +33,23 @@ func (r *mutationResolver) CreateUser(ctx context.Context, input model.NewUser) 
 
 // CreateLink is the resolver for the createLink field.
 func (r *mutationResolver) CreateLink(ctx context.Context, input model.NewLink) (*model.Link, error) {
-	var link links.Link
-	link.Title = input.Title
-	link.Address = input.Address
+	user := auth.ForContext(ctx)
+	if user == nil {
+		return &model.Link{}, fmt.Errorf("access denied")
+	}
+
+	link := links.Link{
+		Title:   input.Title,
+		Address: input.Address,
+		User:    user,
+	}
 	linkID := link.Save()
-	return &model.Link{ID: strconv.FormatInt(linkID, 10), Title: link.Title, Address: link.Address}, nil
+
+	return &model.Link{
+		ID:      strconv.FormatInt(linkID, 10),
+		Title:   link.Title,
+		Address: link.Address,
+	}, nil
 }
 
 // Login is the resolver for the login field.
@@ -71,8 +84,16 @@ func (r *mutationResolver) RefreshToken(ctx context.Context, input model.Refresh
 // Links is the resolver for the links field.
 func (r *queryResolver) Links(ctx context.Context) ([]*model.Link, error) {
 	var result []*model.Link
-	for _, dbLink := range links.GetAll() {
-		result = append(result, &model.Link{ID: dbLink.ID, Title: dbLink.Title, Address: dbLink.Address})
+	for _, link := range links.GetAll() {
+		result = append(result, &model.Link{
+			ID:      link.ID,
+			Title:   link.Title,
+			Address: link.Address,
+			User: &model.User{
+				ID:   link.User.ID,
+				Name: link.User.Username,
+			},
+		})
 	}
 	return result, nil
 }
